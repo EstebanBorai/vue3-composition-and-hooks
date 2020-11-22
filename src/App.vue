@@ -1,27 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div id="app">
+    <Suspense>
+      <template #default>
+        <Users />
+      </template>
+      <template #fallback>
+        <div>Loading...</div>
+      </template>
+    </Suspense>
+  </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent } from 'vue';
+import Users from './components/Users.vue';
 
-@Options({
+export default defineComponent({
   components: {
-    HelloWorld,
+    Users,
   },
-})
-export default class App extends Vue {}
+});
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
